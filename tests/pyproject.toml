@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "tieteellinen-laskin"
+version = "0.1.0"
+description = "Tieteellisen laskimen algoritmien ensimmäinen versio"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+coverage = "^7.0"
+
+[tool.coverage.run]
+branch = true
+source = ["calculator"]
+
+[tool.coverage.report]
+show_missing = true
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
