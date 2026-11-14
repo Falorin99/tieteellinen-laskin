@@ -1,0 +1,33 @@
+
+name: Tests and coverage
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Install dependencies
+        run: poetry install --no-interaction
+
+      - name: Run tests
+        run: poetry run python -m pytest tests
+
+      - name: Measure test coverage
+        run: |
+          poetry run coverage run --branch -m pytest tests
+          poetry run coverage report -m
