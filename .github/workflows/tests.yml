@@ -26,5 +26,10 @@ jobs:
 
       - name: Run tests and coverage
         run: |
-          poetry run coverage run --branch -m pytest tests
+          poetry run coverage run --branch -m pytest
           poetry run coverage report -m
+
+      - name: Run Pylint
+        continue-on-error: true
+        run: poetry run pylint calculator.py main.py
+
